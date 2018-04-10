@@ -1,0 +1,24 @@
+.menu-btn {
+    width: 95px;
+    height: 95px;
+    transition: all .3s;
+    text-decoration: none;
+    
+}
+.menu-btn:hover {
+    img{
+        animation: menuhover .5s infinite;
+    }
+}
+
+@keyframes menuhover {
+    0% {
+      transform: rotate(0deg); }
+    25% {
+      transform: rotate(10deg); }
+    50% {
+      transform: rotate(0deg); }
+    75% {
+      transform: rotate(-10deg); }
+    100% {
+      transform: rotate(0deg); } }

@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap";
+
+*{
+    font-family: 微軟正黑體;
+}
+body{
+    background-color: #333333;
+}
+@media (min-width: 992px){
+    .container {
+        max-width: 1140px;
+    }
+    .modal-lg {
+        max-width: 80%;
+    }
+}
+.card-columns {
+    @include media-breakpoint-only(xl) {
+        column-count: 4;
+    }
+    @include media-breakpoint-only(lg) {
+        column-count: 4;
+    }
+    @include media-breakpoint-only(md) {
+        column-count: 2;
+    }
+    @include media-breakpoint-only(sm) {
+        column-count: 1;
+    }
+  }
