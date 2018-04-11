@@ -16,7 +16,7 @@ import { IndexComponent } from './index/index.component';
 import { ModalModule } from 'ngx-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderAddComponent } from './order-add/order-add.component';
-
+import { TimepickerModule } from 'ngx-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +33,7 @@ import { OrderAddComponent } from './order-add/order-add.component';
     BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
+    TimepickerModule.forRoot(),
     FormsModule,
     ReactiveFormsModule
   ],

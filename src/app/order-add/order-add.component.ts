@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./order-add.component.scss']
 })
 export class OrderAddComponent implements OnInit {
-
+  mytime: Date = new Date();
 
   title: string;
   shop;
@@ -31,6 +31,6 @@ export class OrderAddComponent implements OnInit {
 
 
   submit() {
-    console.log(this.formData);
+    console.log(this.mytime);
   }
 }

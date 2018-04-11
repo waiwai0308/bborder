@@ -16,7 +16,15 @@
             <label>問卷名稱</label>
             <input class="form-control" type="text" placeholder="" [(ngModel)]="formData.NAME">
         </div>
-
+        <div class="form-group">
+            <label>修改密碼</label>
+            <input class="form-control" type="text" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>結束時間</label>
+            <timepicker [(ngModel)]="mytime" [showMeridian]="isMeridian"></timepicker>
+        </div>
+        
     </div>
 
 </div>
