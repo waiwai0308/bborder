@@ -1,6 +1,6 @@
 <section class="shop-content rounded py-3">
     <div class="container">
-        <div class="row">
+        <div class="row" *ngIf="!showSuccessed">
             <div class="col-4 mb-3" *ngFor="let item of shopData">
                 <div class="card">
                     <div class="card-header">{{ item.NAME }}</div>
@@ -12,7 +12,22 @@
             </div>
 
         </div>
-
+        <div class="row d-flex justify-content-center">
+            <div class="col-6 text-center my-5">
+                <h1>這是您的訂購飲料網址</h1>
+                <h1>請記得複製!離開頁面就沒囉!</h1>
+                <div class="input-group">
+                    <input type="text" class="form-control" [(ngModel)]="showOrderID">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ngxClipboard [cbContent]="showOrderID">copy</button>
+                    </span>
+                </div>
+                <br>
+                <br>
+                <br>
+                <a class="btn btn-primary btn-lg"[href]="showOrderID">立即前往</a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -30,7 +45,7 @@
                 <div class="form-group col-md-6">
                     <label>訂購店家</label>
                     <input class="form-control" type="text" placeholder="" [value]="DISPLAYNAME" disabled>
-                    <input class="form-control" type="hidden" placeholder="" formControlName="SHOP" >
+                    <input class="form-control" type="hidden" placeholder="" formControlName="SHOP">
                 </div>
                 <div class="form-group col-md-6">
                     <label>修改密碼(管理訂單用)</label>

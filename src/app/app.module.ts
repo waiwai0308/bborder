@@ -17,6 +17,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderAddComponent } from './order-add/order-add.component';
 import { TimepickerModule } from 'ngx-bootstrap';
+import {ClipboardModule} from 'ngx-clipboard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { TimepickerModule } from 'ngx-bootstrap';
     ModalModule.forRoot(),
     TimepickerModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClipboardModule
   ],
   entryComponents: [
     OrderAddComponent

@@ -17,6 +17,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class OrderShopComponent implements OnInit {
 
   modalRef: BsModalRef;
+  modalRef2: BsModalRef;
 
   orderData: FormGroup;
 
@@ -33,11 +34,13 @@ export class OrderShopComponent implements OnInit {
       SHOP: [''],
       START_TIME: [new Date(), Validators.required],
       END_TIME: [new Date(this.now.getTime() + (2*1000*60*60)), Validators.required],
-      NOTE: ['']
+      NOTE: [''],
+      STATUS : ['OPEN']
     });
   }
 
-
+  showSuccessed = false;
+  showOrderID;
 
 
   ngOnInit() {
@@ -51,9 +54,11 @@ export class OrderShopComponent implements OnInit {
   }
 
   submit(){
+
     this.orderData.value.SHOP = this.selectSHOP;
     this.OrderService.addOrderList(this.orderData.value).subscribe((data)=>{
-      this.router.navigate(['/order/'+data.ID]);
+     this.showOrderID = "http://order.imjwz.com/order/" + data.ID;
+     this.showSuccessed = true;
     });
 
     this.modalRef.hide();

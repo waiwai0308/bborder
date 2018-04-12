@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light mt-12 mt-lg-3 p-0">
-    <a class="navbar-brand pb-3" href="#">
+    <a class="navbar-brand pb-3" [routerLink]="['/']">
         <img src="/assets/images/logo.svg" width="300" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -10,8 +10,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active ">
-                <a [routerLink]="['/shop']" class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0"
-                    href="#">
+                <!-- <a [routerLink]="['/shop']" class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0"> -->
+                <a href="http://order.imjwz.com/shop/" class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0">
                     <img src="/assets/images/menu01.png" alt="" srcset="">
                     <p class="mb-0 mt-2">訂購飲料</p>
                 </a>
@@ -23,13 +23,13 @@
 				</a>
 			</li> -->
             <li class="nav-item active ">
-                <a class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0" href="#">
+                <a class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0">
                     <img src="/assets/images/menu03.png" alt="" srcset="">
                     <p class="mb-0 mt-2">訂單統計</p>
                 </a>
             </li>
             <li class="nav-item active ">
-                <a class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0" href="#">
+                <a class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0">
                     <img src="/assets/images/menu04.png" alt="" srcset="">
                     <p class="mb-0 mt-2">系統管理</p>
                 </a>
