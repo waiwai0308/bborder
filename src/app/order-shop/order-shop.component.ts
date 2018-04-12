@@ -56,6 +56,8 @@ export class OrderShopComponent implements OnInit {
   submit(){
 
     this.orderData.value.SHOP = this.selectSHOP;
+    this.orderData.value.END_TIME = new Date(this.orderData.value.END_TIME.getTime() + (8*1000*60*60));
+    this.orderData.value.START_TIME = new Date(this.orderData.value.START_TIME.getTime() + (8*1000*60*60));
     this.OrderService.addOrderList(this.orderData.value).subscribe((data)=>{
      this.showOrderID = "http://order.imjwz.com/order/" + data.ID;
      this.showSuccessed = true;
