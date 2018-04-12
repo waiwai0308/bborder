@@ -13,7 +13,7 @@ export class OrderSelectComponent implements OnInit {
 
   QDrinkId;
 
-  constructor(private OrderService: OrderService,private route: ActivatedRoute) { 
+  constructor(private OrderService: OrderService,private route: ActivatedRoute,public router: Router) { 
     this.QDrinkId = this.route.snapshot.paramMap.get('id');
   }
 
@@ -29,8 +29,12 @@ export class OrderSelectComponent implements OnInit {
 
   getQuestionInfo(){
     this.OrderService.getOrderList(this.QDrinkId).subscribe((data)=>{
-      this.questionInfoData = data;
-      this.getShopInfo(this.questionInfoData.SHOP);
+      if(data.length == 0){
+        this.router.navigate(['']);
+      }else{
+        this.questionInfoData = data[0];
+        this.getShopInfo(this.questionInfoData.SHOP);
+      }
     });
   }
 

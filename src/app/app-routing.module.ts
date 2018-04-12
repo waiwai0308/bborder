@@ -7,6 +7,7 @@ import { OrderShopComponent } from './order-shop/order-shop.component';
 const routes: Routes = [
   { path: 'shop', component: OrderShopComponent },
   { path: 'order/:id', component: OrderSelectComponent },
+  
   { path: '', redirectTo: '', pathMatch: 'full', component: IndexComponent}
 ];
 

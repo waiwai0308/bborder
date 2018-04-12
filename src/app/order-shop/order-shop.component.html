@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">{{ item.NAME }}</div>
                     <div class="card-body">
-                        <button type="button" class="btn btn-outline-dark" *ngFor="let shop of item.SHOP_BRANCHES" (click)="openModalWithComponent(item.NAME,shop)">{{shop.NAME}}</button>
+                        <button type="button" class="btn btn-outline-dark" *ngFor="let shop of item.SHOP_BRANCHES" (click)="openModalWithComponent(template,item.NAME,shop)">{{shop.NAME}}</button>
 
                     </div>
                 </div>
@@ -15,3 +15,49 @@
 
     </div>
 </section>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">新增飲料訂購單</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form [formGroup]="orderData" (ngSubmit)="submit()">
+        <div class="modal-body">
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>訂購店家</label>
+                    <input class="form-control" type="text" placeholder="" [value]="DISPLAYNAME" disabled>
+                    <input class="form-control" type="hidden" placeholder="" formControlName="SHOP" >
+                </div>
+                <div class="form-group col-md-6">
+                    <label>修改密碼(管理訂單用)</label>
+                    <input class="form-control" type="password" placeholder="" formControlName="EDIT_PW">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>問卷名稱</label>
+                <input class="form-control" type="text" placeholder="" formControlName="NAME">
+            </div>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <label>截止時間</label>
+                <timepicker formControlName="END_TIME" [showMeridian]="ismeridian" [min]="START_TIME"></timepicker>
+            </div>
+            <div class="form-group">
+                <label>備註</label>
+                <textarea class="form-control" name="" id="" cols="10" rows="3" formControlName="NOTE"></textarea>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="modalRef.hide()">取消</button>
+            <button type="submit" class="btn btn-primary" [disabled]="orderData.invalid">新增</button>
+        </div>
+    </form>
+</ng-template>
