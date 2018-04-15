@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row content-header rounded-top" *ngIf="shopInfo">
             <div class="col-md-12">
-                <div class="shop-info my-2 d-md-flex text-white">
+                <div class="shop-info my-2 d-xl-flex text-white">
                     <p class="mb-0 mr-3 align-self-center">
                         <i class="fa fa-home" aria-hidden="true"></i>：{{shopInfo.SHOP_NAME}}</p>
                     <p *ngIf="shopInfo.PHONE2" class="mb-0 mr-3 align-self-center">
@@ -11,9 +11,9 @@
                         <i class="fa fa-phone" aria-hidden="true"></i>：{{shopInfo.PHONE1}}</p>
                     <p class="mb-0 mr-3 align-self-center">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>：{{shopInfo.ADDRESS}}</p>
-                    <div class=" ml-auto">
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">看菜單</button>
-                        <button type="button" class="btn btn-default btn-sm ml-2">看結果</button>
+                    <div class=" ml-auto mt-2 mt-xl-0">
+                        <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#exampleModal">看菜單在這裡</button>
+                        <button type="button" class="btn btn-warning btn-sm" (click)="chooseSelf()">選項沒我要的</button>
                     </div>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -21,7 +21,7 @@
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">菜單明細 </h5>
                                     <div class="ml-auto">
-                                        <a [href]="shopInfo.NOTE" target="_blank" class="btn btn-outline-secondary btn-sm">老花眼看大張</a>
+                                        <a [href]="shopInfo.PIC_URL" target="_blank" class="btn btn-outline-secondary btn-sm">老花眼？看大張！</a>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -29,7 +29,7 @@
 
                                 </div>
                                 <div class="modal-body">
-                                    <img width="100%" [src]="shopInfo.NOTE" alt="" srcset="">
+                                    <img width="100%" [src]="shopInfo.PIC_URL" alt="" srcset="">
                                 </div>
                             </div>
                         </div>
@@ -39,10 +39,14 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="col-12 mt-3">
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    11:30 收攤哦 加點費用 100 元
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="questionInfoData">
+                    訂購主旨：{{questionInfoData.NAME}}
+                    <br> 訂購時間：{{questionInfoData.START_TIME | date:'MM/dd HH:mm'}} ~ {{questionInfoData.END_TIME | date:'MM/dd
+                    HH:mm'}}
+                    <br> 訂購須知：{{questionInfoData.NOTE}}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -50,7 +54,46 @@
             </div>
         </div>
 
-        <div class="card-columns">
+
+
+        <!-- STEP - 2 糖度冰量選擇 -->
+        <div class="row">
+            <div class="col-12">
+                test
+            </div>
+
+        </div>
+
+
+        <!-- STEP - 1 糖度冰量選擇 -->
+        <div class="row">
+            <div class="col-12 mb-3" *ngIf="isChooseSelf">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group input-group-sm mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">名稱</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="sizeselect d-flex align-items-center">
+                            <span class="mr-2">尺寸</span>
+                            <input type="radio" id="S" name="sizeselect">
+                            <label for="S" class="mb-0 ml-1">S</label>
+                            <input type="radio" id="M" name="sizeselect">
+                            <label for="M" class="mb-0 ml-1">M</label>
+                            <input type="radio" id="L" name="sizeselect">
+                            <label for="L" class="mb-0 ml-1">L</label>
+                            <button type="button" class="btn btn-outline-success btn-sm ml-auto">確定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-columns mt-1" *ngIf="!isChooseSelf">
             <div class="card p-0 border-0" *ngFor="let item of menu">
                 <div class="drink-category">
                     <div (click)="openMenu(category)" class="drink-category_title d-flex py-2 mb-2 align-items-center justify-content-between">

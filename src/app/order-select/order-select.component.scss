@@ -166,3 +166,27 @@
     background-image: url('../../assets/images/l.png');
     background-size: 13px 13px;
 }
+
+.sizeselect input {
+    display: none;
+}
+.sizeselect input+ label {
+display: inline-block;
+position: relative;
+width: 30px;
+height: 30px;
+font-size: 13px;
+color: #888;
+font-weight: normal;
+text-align: center;
+cursor: pointer;
+line-height: 30px;
+border: #ccc solid 1px;
+background-color: #fff;
+border-radius: 100px;
+}
+.sizeselect input:checked + label {
+border: rgb(253, 101, 0) solid 1px;
+background-color: transparent;
+color: rgb(253, 101, 0);
+}

@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderAddComponent } from './order-add/order-add.component';
 import { TimepickerModule } from 'ngx-bootstrap';
 import {ClipboardModule} from 'ngx-clipboard';
+import { OrderStatisticsComponent } from './order-statistics/order-statistics.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import {ClipboardModule} from 'ngx-clipboard';
     OrderSelectComponent,
     OrderShopComponent,
     IndexComponent,
-    OrderAddComponent
+    OrderAddComponent,
+    OrderStatisticsComponent
   ],
   imports: [
     HttpModule,

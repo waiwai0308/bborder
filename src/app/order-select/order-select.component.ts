@@ -27,10 +27,16 @@ export class OrderSelectComponent implements OnInit {
   menu;
   id;
 
+  //是否自填
+  isChooseSelf = false;
+
   ngOnInit() {
     this.getQuestionInfo();
   }
 
+  chooseSelf(){
+    this.isChooseSelf = !this.isChooseSelf;
+  }
   
 
   getQuestionInfo(){
@@ -54,14 +60,14 @@ export class OrderSelectComponent implements OnInit {
   getShopName(shopInfo,shopID){
     this.OrderService.getShopName(shopID).subscribe((data)=>{
       this.shopInfo = shopInfo;
-      this.shopInfo.SHOP_NAME = data.NAME;
+      this.shopInfo.SHOP_NAME = data.NAME + "-" + shopInfo.NAME;
     });
   }
 
   getShopMenuType(shopID){
     this.OrderService.getShopMenuType(shopID).subscribe((data)=>{
       this.menu = data;
-      this.getShopMenuTypeItem()
+      this.getShopMenuTypeItem();
     });
   }
 
@@ -72,8 +78,6 @@ export class OrderSelectComponent implements OnInit {
         delete element.SHOP_ID;
       });
     });
-    console.log(this.menu);
-
   }
 
   openMenu(dom){
