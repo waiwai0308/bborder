@@ -19,6 +19,9 @@ import { OrderAddComponent } from './order-add/order-add.component';
 import { TimepickerModule } from 'ngx-bootstrap';
 import {ClipboardModule} from 'ngx-clipboard';
 import { OrderStatisticsComponent } from './order-statistics/order-statistics.component';
+
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,10 @@ import { OrderStatisticsComponent } from './order-statistics/order-statistics.co
     TimepickerModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    ClipboardModule
+    BrowserAnimationsModule,
+    ClipboardModule,
+    
+    NgZorroAntdModule.forRoot()
   ],
   entryComponents: [
     OrderAddComponent

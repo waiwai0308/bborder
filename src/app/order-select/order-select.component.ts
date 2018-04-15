@@ -29,9 +29,33 @@ export class OrderSelectComponent implements OnInit {
 
   //是否自填
   isChooseSelf = false;
+  searchOptions;
+  selectedMultipleOption;
 
+  options = [];
+  selectedOption;
   ngOnInit() {
     this.getQuestionInfo();
+    setTimeout(_ => {
+      this.options = [
+        { value: 'jack', label: 'Jack' },
+        { value: 'lucy', label: 'Lucy' },
+        { value: 'disabled', label: 'Disabled', disabled: true }
+      ];
+      this.selectedOption = this.options[ 0 ];
+    }, 100);
+    /*模拟服务器异步加载*/
+    this.selectedMultipleOption = [ 'tom', 'jack' ];
+    setTimeout(_ => {
+      this.searchOptions = [
+        { value: 'jack', label: '杰克' },
+        { value: 'lucy', label: '露西' },
+        { value: 'tom', label: '汤姆' }
+      ];
+    }, 300);
+    setTimeout(_ => {
+      this.selectedMultipleOption = [ 'tom' ];
+    }, 1000);
   }
 
   chooseSelf(){
