@@ -21,6 +21,9 @@ export class OrderSelectComponent implements OnInit {
 });
   }
 
+  step1 = true;
+  step2 = false;
+
   //問卷資料
   shopInfo;
   questionInfoData;
@@ -30,38 +33,32 @@ export class OrderSelectComponent implements OnInit {
   //是否自填
   isChooseSelf = false;
   searchOptions;
-  selectedMultipleOption;
+  selectedMultipleOption = [];
 
-  options = [];
-  selectedOption;
+
+  //冰塊
+  optionsICE;
+  selectedICEOption;
+  optionsSUGAR;
+  selectedSUGAROption;
+
+  inputWho;
+  inputValue
+
+  drinkItem;
+
+  selectSugarDefault = false;
+
   ngOnInit() {
     this.getQuestionInfo();
-    setTimeout(_ => {
-      this.options = [
-        { value: 'jack', label: 'Jack' },
-        { value: 'lucy', label: 'Lucy' },
-        { value: 'disabled', label: 'Disabled', disabled: true }
-      ];
-      this.selectedOption = this.options[ 0 ];
-    }, 100);
-    /*模拟服务器异步加载*/
-    this.selectedMultipleOption = [ 'tom', 'jack' ];
-    setTimeout(_ => {
-      this.searchOptions = [
-        { value: 'jack', label: '杰克' },
-        { value: 'lucy', label: '露西' },
-        { value: 'tom', label: '汤姆' }
-      ];
-    }, 300);
-    setTimeout(_ => {
-      this.selectedMultipleOption = [ 'tom' ];
-    }, 1000);
+
   }
 
   chooseSelf(){
     this.isChooseSelf = !this.isChooseSelf;
   }
   
+
 
   getQuestionInfo(){
     this.OrderService.getOrderList(this.QDrinkId).subscribe((data)=>{
@@ -70,6 +67,8 @@ export class OrderSelectComponent implements OnInit {
       }else{
         this.questionInfoData = data[0];
         this.getShopInfo(this.questionInfoData.SHOP);
+        this.getIngredientData(this.questionInfoData.SHOP);
+        this.getAmountData(this.questionInfoData.SHOP);
       }
     });
   }
@@ -104,6 +103,22 @@ export class OrderSelectComponent implements OnInit {
     });
   }
 
+  getIngredientData(shopID){
+    this.OrderService.getIngredient(shopID).subscribe((data)=>{
+      this.searchOptions = data;
+
+    });
+  }
+
+  getAmountData(shopID){
+    this.OrderService.getAmount(shopID,'ice').subscribe((data)=>{
+      this.optionsICE = data;
+    });
+    this.OrderService.getAmount(shopID,'sugar').subscribe((data)=>{
+      this.optionsSUGAR = data;
+    });
+  }
+
   openMenu(dom){
     if($(window).width() > 767){
       if($(dom).css('display') == 'none'){
@@ -116,8 +131,27 @@ export class OrderSelectComponent implements OnInit {
     $(dom).fadeToggle();
   }
 
-  selectDrinkItem(itemID,itemSize,itemName){
-    console.log(itemID,itemSize,itemName)
+  selectDrinkItem(item,itemSize){
+    this.step1 = false;
+    this.step2 = true;
+    this.drinkItem = item.NAME;
+    if(item.SUGAR_DEFAULT){
+      this.selectSugarDefault = true;
+    }
+  }
+
+  reOrderDrink(){
+    this.step1 = true;
+    this.step2 = false;
+    this.selectedMultipleOption = [];
+    this.selectSugarDefault = false;
+    this.selectedICEOption="";
+    this.selectedSUGAROption="";
+  }
+
+  orderDrink(){
+    console.log(this.selectedICEOption);
+    console.log(this.selectedSUGAROption);
   }
 
 }

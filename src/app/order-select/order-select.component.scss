@@ -220,8 +220,11 @@ color: rgb(253, 101, 0);
 .rwd-table td:last-child{
 	font-size: 18px;
 }
+.rwd-table .t0 {
+	width: 10%;
+}
 .rwd-table .t1 {
-	width: 30%;
+	width: 25%;
 }
 .rwd-table .t2 {
 	width: 10%;
@@ -233,12 +236,12 @@ color: rgb(253, 101, 0);
 	width: 20%;
 }
 .rwd-table .t5 {
-	width: 20%;
-}
-.rwd-table .t6 {
 	width: 10%;
 }
-@media screen and (max-width: 640px) {
+.rwd-table .t6 {
+	width: 15%;
+}
+@media screen and (max-width: 768px) {
 	.table {
 		padding:10px;
 	}
@@ -289,7 +292,21 @@ color: rgb(253, 101, 0);
 }
 /* TABLE */
 
+
 .add-order{
     display: block;
     font-size: 24px;
+}
+
+.ant-select{
+    width: 100%;
+}
+@media screen and (max-width: 768px) {
+    nz-input{
+        width: calc(100% - 130px) !important;
+    }
+    .ant-select{
+        width: calc(100% - 130px)  !important;
+    }
+
 }

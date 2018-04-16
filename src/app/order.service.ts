@@ -59,6 +59,19 @@ export class OrderService {
     });
 
   }
-  
 
+  /** 取的加料 */
+  getIngredient(ID){
+    return this.http.get(this.apiUrl + 'api/SHOP_MENU_INGREDIENT?SHOP_ID=' + ID).map(data=>{
+        return data.json();
+    });
+  }
+  
+  /** 冰塊甜度 */
+  getAmount(ID,TYPE){
+    return this.http.get(this.apiUrl + 'api/SHOP_MENU_AMOUNT?SHOP_ID='+ID+'&TYPE='+TYPE).map(data=>{
+        return data.json();
+    });
+  }
+  
 }
