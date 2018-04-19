@@ -196,8 +196,9 @@ export class OrderSelectComponent implements OnInit {
     }
     this.OrderService.addOrderItem(orderData).subscribe((data)=>{
       console.log(data);
+      this.router.navigate(['/result/'+ this.QDrinkId]);
     });
-    this.router.navigate(['/result/'+ this.QDrinkId]);
+    
   }
 
 }
