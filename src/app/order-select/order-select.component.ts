@@ -38,12 +38,15 @@ export class OrderSelectComponent implements OnInit {
 
   //冰塊
   optionsICE;
-  selectedICEOption;
+  selectedICEOption="";
   optionsSUGAR;
-  selectedSUGAROption;
+  selectedSUGAROption="";
 
+  //儲存訂購資訊
   inputWho;
-  inputValue
+  inputNote;
+  inputPW;
+  selectItem;
 
   drinkItem;
 
@@ -119,6 +122,7 @@ export class OrderSelectComponent implements OnInit {
     });
   }
 
+  //手機板隱藏全部
   openMenu(dom){
     if($(window).width() > 767){
       if($(dom).css('display') == 'none'){
@@ -131,15 +135,21 @@ export class OrderSelectComponent implements OnInit {
     $(dom).fadeToggle();
   }
 
-  selectDrinkItem(item,itemSize){
+  //選擇飲料
+  selectDrinkItem(item,itemSize,itemPrice){
     this.step1 = false;
     this.step2 = true;
-    this.drinkItem = item.NAME;
+    this.drinkItem = item.NAME + "(" + itemSize + ")";
+    this.selectItem = item;
+    this.selectItem.selectSize = itemSize;
+    this.selectItem.selectPrice = itemPrice;
     if(item.SUGAR_DEFAULT){
       this.selectSugarDefault = true;
     }
   }
 
+
+  //重新選擇飲料
   reOrderDrink(){
     this.step1 = true;
     this.step2 = false;
@@ -147,11 +157,47 @@ export class OrderSelectComponent implements OnInit {
     this.selectSugarDefault = false;
     this.selectedICEOption="";
     this.selectedSUGAROption="";
+    this.inputNote="";
   }
 
+
+  // 檢查是否都填寫完畢
+  checkOrder(){
+    if(!this.selectedICEOption || !this.selectedSUGAROption || !this.inputWho || !this.inputPW){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //訂購飲料
   orderDrink(){
-    console.log(this.selectedICEOption);
-    console.log(this.selectedSUGAROption);
+
+    let totalINGREDIENTPrice = 0;
+    let totalINGREDIENTName = "";
+    this.selectedMultipleOption.forEach(element => {
+      let cutData = element.split(',');
+      totalINGREDIENTPrice += parseInt(cutData[1]);
+      totalINGREDIENTName += cutData[0] + ',';
+    });
+
+    let orderData = {
+      "ORDER_ID": this.QDrinkId,
+      "NAME": this.inputWho,
+      "PRICE": parseInt(this.selectItem.selectPrice) + totalINGREDIENTPrice,
+      "NOTE": this.inputNote,
+      "EDIT_PW": this.inputPW,
+      "ITEM_ID": this.selectItem.ID,
+      "SIZE":  this.selectItem.selectSize,
+      "ICE": this.selectedICEOption,
+      "SUGAR": this.selectedSUGAROption,
+      "INGREDIENT": totalINGREDIENTName.substring(0, totalINGREDIENTName.length-1),
+      "ITEM_NAME": this.selectItem.NAME
+    }
+    this.OrderService.addOrderItem(orderData).subscribe((data)=>{
+      console.log(data);
+    });
+    this.router.navigate(['/result/'+ this.QDrinkId]);
   }
 
 }

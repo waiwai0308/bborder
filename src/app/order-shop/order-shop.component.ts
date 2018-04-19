@@ -42,6 +42,7 @@ export class OrderShopComponent implements OnInit {
   showSuccessed = false;
   showOrderID;
 
+  showSuccess = false;
 
   ngOnInit() {
     this.getAllShop();
@@ -85,6 +86,10 @@ export class OrderShopComponent implements OnInit {
         element.SHOP_BRANCHES = data;
       });
     });
+  }
+
+  successFun(){
+    this.showSuccess = true;
   }
 
 }

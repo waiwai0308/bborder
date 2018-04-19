@@ -1,0 +1,41 @@
+<section class="result-list py-3" *ngIf="hasRouteID">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="t-0">大名</th>
+                            <th scope="col">飲料</th>
+                            <th scope="col" class="t-2">甜度</th>
+                            <th scope="col" class="t-3">尺寸</th>
+                            <th scope="col" class="t-4">冰塊</th>
+                            <th scope="col">加料</th>
+                            <th scope="col">備註</th>
+                            <th scope="col" class="t-7">功能</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data">
+                            <td>{{item.NAME}}</td>
+                            <td>{{item.ITEM_NAME}}</td>
+                            <td>{{item.SUGAR}}</td>
+                            <td>{{item.SIZE}}</td>
+                            <td>{{item.ICE}}</td>
+                            <td>{{item.INGREDIENT}}</td>
+                            <td>{{item.NOTE}}</td>
+                            <td>
+                                <span class="btn btn-danger btn-sm" (click)="deleteOrderItem(item.ID)">刪除</span>
+                                <span class="btn btn-primary btn-sm" (click)="copyOrderData(item.ID)">學我</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="!hasRouteID">
+
+</section>

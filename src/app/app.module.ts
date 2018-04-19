@@ -17,11 +17,11 @@ import { ModalModule } from 'ngx-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderAddComponent } from './order-add/order-add.component';
 import { TimepickerModule } from 'ngx-bootstrap';
-// import {ClipboardModule} from 'ngx-clipboard';
-import { OrderStatisticsComponent } from './order-statistics/order-statistics.component';
+import {ClipboardModule} from 'ngx-clipboard';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderResultComponent } from './order-result/order-result.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     OrderShopComponent,
     IndexComponent,
     OrderAddComponent,
-    OrderStatisticsComponent
+    OrderResultComponent
   ],
   imports: [
     HttpModule,
@@ -43,8 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    // ClipboardModule,
-    
+    ClipboardModule,
     NgZorroAntdModule.forRoot()
   ],
   entryComponents: [

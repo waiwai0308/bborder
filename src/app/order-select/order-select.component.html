@@ -13,7 +13,7 @@
                         <i class="fa fa-map-marker" aria-hidden="true"></i>：{{shopInfo.ADDRESS}}</p>
                     <div class=" ml-auto mt-2 mt-xl-0">
                         <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#exampleModal">看菜單在這裡</button>
-                        <button type="button" class="btn btn-warning btn-sm" (click)="chooseSelf()" *ngIf="step1">選項沒我要的</button>
+                        <!-- <button type="button" class="btn btn-warning btn-sm" (click)="chooseSelf()" *ngIf="step1">選項沒我要的</button> -->
                     </div>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -62,23 +62,28 @@
                 <table class="rwd-table">
                     <tbody>
                         <tr>
-                            <th class="t0">是誰</th>
+                            <th class="t0">大名</th>
+                            <th class="t6">密碼 <i class="fa fa-question-circle" nz-tooltip="如果你訂完後，後悔要刪除時的刪除密碼"></i></th>
                             <th class="t1">飲品</th>
                             <th class="t2">甜度</th>
                             <th class="t3">冰塊</th>
                             <th class="t4">加料</th>
                             <th class="t5">備註</th>
-                            <th class="t6"></th>
+                            
                         </tr>
                         <tr>
-                            <td data-th="是誰" class="spcing">
-                                <nz-input [(ngModel)]="inputWho" [nzPlaceHolder]="'哪位？'"></nz-input>
+                            <td data-th="大名" class="spcing">
+                                <nz-input [(ngModel)]="inputWho" [nzPlaceHolder]="'哪位帥哥美女?'"></nz-input>
+                            </td>
+                            <td data-th="密碼" class="spcing">
+                                <nz-input [nzType]="'password'" [(ngModel)]="inputPW" [nzPlaceHolder]="'密碼'"></nz-input>
+
                             </td>
                             <td data-th="飲品" class="spcing">{{drinkItem}}</td>
                             <td data-th="甜度" class="spcing">
 
                                 <nz-select [(ngModel)]="selectedSUGAROption" [nzPlaceHolder]="'甜度選擇'" [nzDisabled]="selectSugarDefault" nzAllowClear>
-                                    <nz-option *ngFor="let option of optionsSUGAR" [nzLabel]="option.NAME" [nzValue]="option.ID+','+option.NAME">
+                                    <nz-option *ngFor="let option of optionsSUGAR" [nzLabel]="option.NAME" [nzValue]="option.NAME">
                                     </nz-option>
                                 </nz-select>
 
@@ -86,34 +91,31 @@
                             <td data-th="冰塊" class="spcing">
 
                                 <nz-select [(ngModel)]="selectedICEOption" [nzPlaceHolder]="'冰量選擇'" nzAllowClear>
-                                    <nz-option *ngFor="let option of optionsICE" [nzLabel]="option.NAME" [nzValue]="option.ID+','+option.NAME">
+                                    <nz-option *ngFor="let option of optionsICE" [nzLabel]="option.NAME" [nzValue]="option.NAME">
                                     </nz-option>
                                 </nz-select>
                             </td>
                             <td data-th="加料" class="spcing">
                                 <nz-select [nzMode]="'multiple'" [nzPlaceHolder]="'加料請點我'" [(ngModel)]="selectedMultipleOption" [nzNotFoundContent]="'沒有選項喔'">
-                                    <nz-option *ngFor="let option of searchOptions" [nzLabel]="option.NAME + ' +' + option.PRICE" [nzValue]="option.ID" [nzDisabled]="option.disabled">
+                                    <nz-option *ngFor="let option of searchOptions" [nzLabel]="option.NAME + ' +' + option.PRICE" [nzValue]="option.NAME + ',' + option.PRICE" [nzDisabled]="option.disabled">
                                     </nz-option>
                                 </nz-select>
                             </td>
                             <td data-th="備註" class="spcing">
-                                <nz-input [(ngModel)]="inputValue" [nzPlaceHolder]="'備註'"></nz-input>
-                            </td>
-                            <td data-th="" class="spcing">
-                                <!-- <a href="">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    
-                                </a> -->
-                                <button nz-button [nzType]="'primary'" (click)="orderDrink()">
-                                    <span>訂購</span>
-                                </button>
-                                <button nz-button [nzType]="'default'" (click)="reOrderDrink()">
-                                    <span>重選</span>
-                                </button>
+                                <nz-input [(ngModel)]="inputNote" [nzPlaceHolder]="'備註'"></nz-input>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+
+            </div>
+            <div class="col-12 text-center my-3">
+                    <button nz-button [nzType]="'default'" (click)="reOrderDrink()">
+                            <span>重選</span>
+                        </button>
+                <button nz-button [nzType]="'primary'" (click)="orderDrink()" [disabled]="checkOrder()">
+                    <span>訂購</span>
+                </button>
             </div>
             <!-- <div class="col-6 text-left my-3">
                 <span class="add-order">
@@ -135,7 +137,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-sm">名稱</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" >
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -170,11 +172,11 @@
                             <!-- <span class="is-hot">H</span> -->
                             <div class="drink_name pl-3">{{detail.NAME}}</div>
                             <div class="ml-auto">
-                                <span *ngIf="detail.M_PRICE" class="price" (click)="selectDrinkItem(detail,'M')">
+                                <span *ngIf="detail.M_PRICE" class="price" (click)="selectDrinkItem(detail,'M',detail.M_PRICE)">
                                     <i class="m-size"></i>
                                     {{detail.M_PRICE}}
                                 </span>
-                                <span *ngIf="detail.L_PRICE" class="price" (click)="selectDrinkItem(detail,'L')">
+                                <span *ngIf="detail.L_PRICE" class="price" (click)="selectDrinkItem(detail,'L',detail.L_PRICE)">
                                     <i class="l-size"></i>
                                     {{detail.L_PRICE}}
                                 </span>

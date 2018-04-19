@@ -74,4 +74,16 @@ export class OrderService {
     });
   }
   
+  addOrderItem(data){
+    return this.http.post(this.apiUrl + 'api/ORDER_ITEM', data).map(data=>{
+        return data.json();
+    });
+  }
+
+  /**取得訂購明細 */
+  getOrderData(ID){
+    return this.http.get(this.apiUrl + 'api/ORDER_ITEM?ORDER_ID='+ID).map(data=>{
+        return data.json();
+    });
+  }
 }
