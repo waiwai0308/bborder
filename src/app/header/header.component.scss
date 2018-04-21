@@ -22,3 +22,11 @@
       transform: rotate(-10deg); }
     100% {
       transform: rotate(0deg); } }
+
+@media (max-width: 460px) {
+    .navbar-brand{
+      img{
+        width: 220px;
+      }
+    } 
+}

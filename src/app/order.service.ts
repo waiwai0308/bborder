@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Headers } from '@angular/http';
+
 @Injectable()
 export class OrderService {
 
@@ -83,6 +83,13 @@ export class OrderService {
   /**取得訂購明細 */
   getOrderData(ID){
     return this.http.get(this.apiUrl + 'api/ORDER_ITEM?ORDER_ID='+ID).map(data=>{
+        return data.json();
+    });
+  }
+
+  /**刪除訂購明細 */
+  deleteOrderData(ID,PW){
+    return this.http.delete(this.apiUrl + 'api/ORDER_ITEM?id='+ID+'&pw='+PW).map(data=>{
         return data.json();
     });
   }

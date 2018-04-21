@@ -37,9 +37,7 @@ export class OrderAddComponent implements OnInit {
         'STATUS': 'OPEN',
         'NOTE': this.NOTE
       };
-      console.log(formData);
       this.OrderService.addOrderList(formData).subscribe((data)=>{
-        console.log(data);
       });
 
   }

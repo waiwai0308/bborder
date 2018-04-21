@@ -6,7 +6,7 @@ import { OrderSelectComponent } from './order-select/order-select.component';
 import { OrderShopComponent } from './order-shop/order-shop.component';
 import { OrderResultComponent } from './order-result/order-result.component';
 const routes: Routes = [
-  { path: 'shop', component: OrderShopComponent },
+  { path: 'shop', component: OrderShopComponent, runGuardsAndResolvers: 'always' },
   { path: 'result/:id', component: OrderResultComponent },
   { path: 'result', component: OrderResultComponent },
   { path: 'order/:id', component: OrderSelectComponent },
@@ -14,7 +14,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

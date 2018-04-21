@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module'
 import { OrderService } from './order.service';
+import { WhereService } from './where.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -49,7 +50,7 @@ import { OrderResultComponent } from './order-result/order-result.component';
   entryComponents: [
     OrderAddComponent
   ],
-  providers: [OrderService],
+  providers: [OrderService,WhereService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,40 +1,69 @@
-<section class="result-list py-3" *ngIf="hasRouteID">
+<app-header [headerID]="QDrinkId"></app-header>
+
+<section class="result-list py-3 rounded" *ngIf="hasRouteID">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="t-0">大名</th>
-                            <th scope="col">飲料</th>
-                            <th scope="col" class="t-2">甜度</th>
-                            <th scope="col" class="t-3">尺寸</th>
-                            <th scope="col" class="t-4">冰塊</th>
-                            <th scope="col">加料</th>
-                            <th scope="col">備註</th>
-                            <th scope="col" class="t-7">功能</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of data">
-                            <td>{{item.NAME}}</td>
-                            <td>{{item.ITEM_NAME}}</td>
-                            <td>{{item.SUGAR}}</td>
-                            <td>{{item.SIZE}}</td>
-                            <td>{{item.ICE}}</td>
-                            <td>{{item.INGREDIENT}}</td>
-                            <td>{{item.NOTE}}</td>
-                            <td>
-                                <span class="btn btn-danger btn-sm" (click)="deleteOrderItem(item.ID)">刪除</span>
-                                <span class="btn btn-primary btn-sm" (click)="copyOrderData(item.ID)">學我</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                        <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="t-0">大名</th>
+                                        <th scope="col">飲料</th>
+                                        <th scope="col" class="t-2">甜度</th>
+                                        <th scope="col" class="t-3">尺寸</th>
+                                        <th scope="col" class="t-4">冰塊</th>
+                                        <th scope="col">加料</th>
+                                        <th scope="col">備註</th>
+                                        <th scope="col" class="t-7">功能</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of data">
+                                        <td>{{item.NAME}}</td>
+                                        <td>{{item.ITEM_NAME}}</td>
+                                        <td>{{item.SUGAR}}</td>
+                                        <td>{{item.SIZE}}</td>
+                                        <td>{{item.ICE}}</td>
+                                        <td>{{item.INGREDIENT}}</td>
+                                        <td>{{item.NOTE}}</td>
+                                        <td>
+                                            <span class="btn btn-danger btn-sm" (click)="openDeleteMoadl(template,item.ID)">刪除</span>
+                                            <span class="btn btn-primary btn-sm" (click)="copyOrderData(item.ID)">學我</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                </div>
+              
             </div>
         </div>
     </div>
 </section>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">刪除訂購</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+            <nz-alert [nzType]="'error'" *ngIf='showErrorPW'>
+                    <span alert-body>
+                      <pre>刪除密碼錯誤！</pre>
+                    </span>
+                  </nz-alert>
+        <div class="form-group">
+            <label>密碼</label>
+            <input class="form-control" type="password" placeholder="請輸入訂購時輸入的密碼" [(ngModel)]="editPW">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">取消</button>
+        <button type="submit" class="btn btn-primary" (click)="deleteOrderItem()" [disabled]="!editPW">刪除</button>
+    </div>
+</ng-template>
 
 <section *ngIf="!hasRouteID">
 
