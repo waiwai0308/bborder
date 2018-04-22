@@ -59,4 +59,8 @@ export class OrderResultComponent implements OnInit {
 
     });
   }
+
+  copyOrderData(item){
+    return alert('此功能尚未開放');
+  }
 }

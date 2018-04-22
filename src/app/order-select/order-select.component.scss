@@ -9,10 +9,11 @@
     padding: 0;
 }
 .drink-category_title{
-    background-color: #8DC542;
+    background-color: #48B9D3;
     color: white;
     border-radius: 5px;
     position: relative;
+    font-weight: bold;
 }
 
 @media (max-width: 575.98px) {
@@ -47,16 +48,7 @@
     width: 100%;
     font-family: 標楷體;
 }
-.drink-category_title::before{
-    position: absolute;
-    content:"";
-    width: calc(100% - 9px);
-    height: 30px;
-    border: 1px solid white;
-    opacity: .6;
-    left: 4px;
-    top: 5px;
-}
+
 
 .drink-category_list{
     margin: 0;
@@ -164,6 +156,13 @@
     height: 13px;
     width: 13px;
     background-image: url('/assets/images/l.png');
+    background-size: 13px 13px;
+}
+.c-size{
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+    background-image: url('/assets/images/c.png');
     background-size: 13px 13px;
 }
 

@@ -163,7 +163,7 @@ export class OrderSelectComponent implements OnInit {
 
   // 檢查是否都填寫完畢
   checkOrder(){
-    if(!this.selectedICEOption || (!this.selectedSUGAROption && !this.selectSugarDefault) || !this.inputWho || !this.inputPW){
+    if(!this.selectedICEOption || !this.selectedSUGAROption || !this.inputWho || !this.inputPW){
       return true;
     } else {
       return false;
@@ -181,13 +181,6 @@ export class OrderSelectComponent implements OnInit {
       totalINGREDIENTName += cutData[0] + ',';
     });
 
-    let sugarStatus = '';
-    if(this.selectSugarDefault){
-      sugarStatus = '固定'
-    }else{
-      sugarStatus = this.selectedSUGAROption;
-    }
-
     let orderData = {
       "ORDER_ID": this.QDrinkId,
       "NAME": this.inputWho,
@@ -197,7 +190,7 @@ export class OrderSelectComponent implements OnInit {
       "ITEM_ID": this.selectItem.ID,
       "SIZE":  this.selectItem.selectSize,
       "ICE": this.selectedICEOption,
-      "SUGAR": sugarStatus,
+      "SUGAR": this.selectedSUGAROption,
       "INGREDIENT": totalINGREDIENTName.substring(0, totalINGREDIENTName.length-1),
       "ITEM_NAME": this.selectItem.NAME
     }
