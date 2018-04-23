@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover  bg-white">
                                 <thead>
                                     <tr>
                                         <th scope="col" class="t-0">大名</th>
@@ -19,7 +19,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of data">
+                                    <tr *ngFor="let item of data; let i = index" >
                                         <td>{{item.NAME}}</td>
                                         <td>{{item.ITEM_NAME}}</td>
                                         <td>{{item.SUGAR}}</td>
@@ -28,14 +28,30 @@
                                         <td>{{item.INGREDIENT}}</td>
                                         <td>{{item.NOTE}}</td>
                                         <td>
-                                            <span class="btn btn-danger btn-sm" (click)="openDeleteMoadl(template,item.ID)">刪除</span>
-                                            <span class="btn btn-primary btn-sm" (click)="copyOrderData(item.ID)">學我</span>
+                                            <span class="btn btn-outline-danger btn-sm" (click)="openDeleteMoadl(template,item.ID)">刪除</span>
+                                            <span class="btn btn-outline-dark btn-sm" (click)="copyOrderData(template2,i)">學我</span>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                 </div>
               
+            </div>
+            <div class="col-12">
+                <table class="table table-sm bg-white">
+                    <!-- <thead>
+                      <tr>
+                        <th scope="col">飲料</th>
+                        <th scope="col">甜度/冰塊</th>
+                        <th scope="col">備註</th>
+                      </tr>
+                    </thead> -->
+                    <tbody>
+                      <tr>
+                          <td colspan="3" class="text-right">訂單總金額: {{totalPrice}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
             </div>
         </div>
     </div>
@@ -62,6 +78,28 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-default" (click)="modalRef.hide()">取消</button>
         <button type="submit" class="btn btn-primary" (click)="deleteOrderItem()" [disabled]="!editPW">刪除</button>
+    </div>
+</ng-template>
+
+
+<ng-template #template2>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">揪肆愛學人</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+                <label>是誰</label>
+                <input class="form-control" type="text" placeholder="哪位帥哥美女?" [(ngModel)]="addNAME">
+            <label>密碼</label>
+            <input class="form-control" type="password" placeholder="請輸入訂購密碼" [(ngModel)]="addPW">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modalRef2.hide()">取消</button>
+        <button type="submit" class="btn btn-primary" (click)="addCopyItem()" [disabled]="!addPW && !addNAME">訂購</button>
     </div>
 </ng-template>
 

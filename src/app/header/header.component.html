@@ -10,14 +10,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto  d-flex flex-row">
             <li class="nav-item active " *ngIf='!headerID'>
-                <a [routerLink]="['/shop']" class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0">
+                <a [routerLink]="['/shop']" class="menu-btn d-flex align-items-center justify-content-center flex-column p-0">
                 <!-- <a href="http://order.imjwz.com/shop/" class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0"> -->
                     <img src="/assets/images/menu01.png" alt="" srcset="">
                     <p class="mb-0 mt-2">訂購飲料</p>
                 </a>
             </li>
             <li class="nav-item active " *ngIf='headerID'>
-                    <a [routerLink]="['/order/'+headerID]" class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0">
+                    <a [routerLink]="['/order/'+headerID]" class="menu-btn d-flex align-items-center justify-content-center flex-column p-0">
                     <!-- <a href="http://order.imjwz.com/shop/" class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0"> -->
                         <img src="/assets/images/menu01.png" alt="" srcset="">
                         <p class="mb-0 mt-2">訂購飲料</p>
@@ -30,13 +30,13 @@
 				</a>
 			</li> -->
             <li class="nav-item active ">
-                <a [routerLink]="['/result/'+headerID]" class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0">
+                <a [routerLink]="['/result/'+headerID]" class="menu-btn d-flex align-items-center justify-content-center flex-column p-0">
                     <img src="/assets/images/menu03.png" alt="" srcset="">
                     <p class="mb-0 mt-2">訂單統計</p>
                 </a>
             </li>
             <li class="nav-item active ">
-                <a class="menu-btn text-white d-flex align-items-center justify-content-center flex-column p-0">
+                <a class="menu-btn  d-flex align-items-center justify-content-center flex-column p-0">
                     <img src="/assets/images/menu04.png" alt="" srcset="">
                     <p class="mb-0 mt-2">訂單管理</p>
                 </a>

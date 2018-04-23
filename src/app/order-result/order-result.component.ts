@@ -16,6 +16,7 @@ import {NzMessageService} from 'ng-zorro-antd';
 export class OrderResultComponent implements OnInit {
 
   modalRef: BsModalRef;
+  modalRef2: BsModalRef;
 
   hasRouteID = true;
   QDrinkId;
@@ -29,6 +30,8 @@ export class OrderResultComponent implements OnInit {
   editID = '';
   showErrorPW = false;
 
+  totalPrice = 0;
+
   ngOnInit() {
     this.getOrderData();
   }
@@ -36,7 +39,23 @@ export class OrderResultComponent implements OnInit {
   getOrderData(){
     this.OrderService.getOrderData(this.QDrinkId).subscribe((data)=>{
       this.data = data;
+      this.countTotal(data);
     });
+  }
+
+  countTotal(data){
+    let itemName = [];
+    let itemICE = [];
+    let itemSUGAR = [];
+
+    data.forEach(element => {
+      itemName.push(element.ITEM_NAME);
+      itemICE.push(element.SIZE);
+      itemSUGAR.push(element.SUGAR)
+      this.totalPrice += element.PRICE;
+    });
+
+
   }
   
   openDeleteMoadl(template, itemID){
@@ -60,7 +79,27 @@ export class OrderResultComponent implements OnInit {
     });
   }
 
-  copyOrderData(item){
-    return alert('此功能尚未開放');
+  addNAME;
+  addPW;
+  copyID;
+
+  copyOrderData(template,item){
+    this.modalRef2 = this.modalService.show(template);
+    this.copyID = item;
+  }
+
+  addCopyItem(){
+    let newData = this.data[this.copyID];
+    newData.EDIT_PW = this.addPW;
+    newData.NAME = this.addNAME;
+    this.data = [];
+    this.OrderService.addOrderItem(newData).subscribe((test)=>{
+      this.addNAME = '';
+      this.addPW='';
+      this.modalRef2.hide();
+      
+      this.getOrderData();
+      this._message.info('學人成功!', {nzDuration: 5000});
+    });
   }
 }

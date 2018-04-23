@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/scss/bootstrap";
-
 *{
     font-family: 微軟正黑體;
 }
 body{
-    background-color: #333333  !important;
+        
+        background-size: cover;
         font-size: 16px !important;
-        color: #212529 !important;
+        color: #181c1f !important;
 
 }
 @media (min-width: 992px){

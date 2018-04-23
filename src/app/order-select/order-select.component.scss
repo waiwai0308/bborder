@@ -1,20 +1,28 @@
+
+
 .order-content{
-    background-color: white; 
+    background-color: rgba(246,246,246,1); 
 }
 .content-header{
-    background-color: #48B9D3;
+    background: linear-gradient(to right,#BD3F32,#B31217);
 }
 .drink-category{
     margin: 0;
     padding: 0;
 }
 .drink-category_title{
-    background-color: #48B9D3;
+    background: linear-gradient(to right,#BD3F32,#B31217);
     color: white;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
     position: relative;
     font-weight: bold;
 }
+
+.card{
+    background: linear-gradient(to bottom, rgb(255,255,255), rgb(252,252,252));
+    
+}
+
 
 @media (max-width: 575.98px) {
     .card-columns{
@@ -42,11 +50,10 @@
     } 
 }
 .category_name{
-    font-size: 16px;
+    font-size: 18px;
     padding-left:16px;
     display: block;
     width: 100%;
-    font-family: 標楷體;
 }
 
 

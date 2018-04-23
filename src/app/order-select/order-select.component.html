@@ -13,7 +13,7 @@
                     <p class="mb-0 mr-3 align-self-center">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>：{{shopInfo.ADDRESS}}</p>
                     <div class=" ml-auto mt-2 mt-xl-0">
-                        <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#exampleModal">看菜單在這裡</button>
+                        <button type="button" class="btn  btn-outline-light btn-sm" data-toggle="modal" data-target="#exampleModal">看菜單在這裡</button>
                         <!-- <button type="button" class="btn btn-warning btn-sm" (click)="chooseSelf()" *ngIf="step1">選項沒我要的</button> -->
                     </div>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,7 +43,7 @@
 
         <div class="row">
             <div class="col-12 mt-3">
-                <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="questionInfoData">
+                <div class="alert alert-light alert-dismissible fade show" role="alert" *ngIf="questionInfoData">
                     訂購主旨：{{questionInfoData.NAME}}
                     <br> 訂購時間：{{questionInfoData.START_TIME | date:'MM/dd HH:mm'}} ~ {{questionInfoData.END_TIME | date:'MM/dd
                     HH:mm'}}

@@ -1,5 +1,16 @@
 <app-header [headerID]="QDrinkId"></app-header>
 
 <section class="index-content rounded">
-    <h1>我是首頁!但我想不到放啥</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 my-3">
+                <h2 class="mb-3">Q & A</h2>
+                    <nz-collapseset [nzBordered]="false">
+                            <nz-collapse *ngFor="let panel of panels" [nzTitle]="panel.name" [nzActive]="panel.active">
+                                <p>{{panel.content}}</p>
+                            </nz-collapse>
+                        </nz-collapseset>
+            </div>
+        </div>
+    </div>
 </section>

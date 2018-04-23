@@ -1,5 +1,5 @@
 .result-list{
-    background-color: #fff;
+    background-color: rgba(246,246,246,1); 
 }
 .t-0{
     width: 80px;
@@ -17,5 +17,9 @@
     width: 130px;
 }
 .table{
-    width: 1080px !important;
+    min-width: 1080px !important;
+}
+
+.ng-star-inserted{
+    z-index: 100000 !important;
 }

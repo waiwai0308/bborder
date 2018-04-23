@@ -1,4 +1,8 @@
 .index-content{
-    background-color: #fff;
+    background-color: rgba(246,246,246,1); 
     overflow: hidden;
+}
+
+.ant-collapse > .ant-collapse-item{
+    background-color: #f6f6f6!important;
 }
