@@ -157,6 +157,10 @@
             </div>
 
         </div>
+        <div class="col-12 mb-3 d-flex align-items-center">
+            <span class="season-default-qa mr-2"></span><span style="font-size: 10px">季節限定</span>
+            <span class="sugar-default-qa mx-2"></span><span style="font-size: 10px">甜度固定</span>
+        </div>
         <div class="card-columns mt-1" *ngIf="!isChooseSelf && step1">
             <div class="card p-0 border-0" *ngFor="let item of menu">
                 <div class="drink-category">
@@ -171,7 +175,7 @@
                     <ul class="drink-category_list px-1" #category>
                         <li class='drink-category_item d-flex p-0 py-2' *ngFor="let detail of item.ITEM">
                             <!-- <span class="is-hot">H</span> -->
-                            <div class="drink_name pl-3">{{detail.NAME}}</div>
+                            <div class="drink_name pl-3"><span class="season-default" *ngIf="detail.SEASON_ONLY"></span><span class="sugar-default"  *ngIf="detail.SUGAR_DEFAULT"></span>{{detail.NAME}}</div>
                             <div class="ml-auto">
                                 <span *ngIf="detail.M_PRICE" class="price" (click)="selectDrinkItem(detail,'M',detail.M_PRICE)">
                                     <i class="m-size"></i>

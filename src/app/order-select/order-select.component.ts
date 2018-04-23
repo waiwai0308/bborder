@@ -146,6 +146,7 @@ export class OrderSelectComponent implements OnInit {
     if(item.SUGAR_DEFAULT){
       this.selectSugarDefault = true;
     }
+    console.log(item);
   }
 
 
@@ -163,7 +164,7 @@ export class OrderSelectComponent implements OnInit {
 
   // 檢查是否都填寫完畢
   checkOrder(){
-    if(!this.selectedICEOption || !this.selectedSUGAROption || !this.inputWho || !this.inputPW){
+    if(!this.selectedICEOption || (!this.selectedSUGAROption && !this.selectSugarDefault) || !this.inputWho || !this.inputPW){
       return true;
     } else {
       return false;
