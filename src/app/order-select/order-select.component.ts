@@ -78,7 +78,7 @@ export class OrderSelectComponent implements OnInit {
 
   getShopInfo(shopID){
     this.OrderService.getShopInfo(shopID).subscribe((data)=>{
-      this.getShopMenuType(data.ID);
+      this.getShopMenuType(data.MENU_ID);
       this.getShopName(data,data.SHOP_ID);
     });
   }

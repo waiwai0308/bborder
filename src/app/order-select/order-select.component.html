@@ -157,7 +157,7 @@
             </div>
 
         </div>
-        <div class="col-12 mb-3 d-flex align-items-center">
+        <div class="col-12 mb-3 d-flex align-items-center" *ngIf="step1">
             <span class="season-default-qa mr-2"></span><span style="font-size: 10px">季節限定</span>
             <span class="sugar-default-qa mx-2"></span><span style="font-size: 10px">甜度固定</span>
         </div>
@@ -167,7 +167,7 @@
                     <div (click)="openMenu(category)" class="drink-category_title d-flex py-1 mb-2 align-items-center justify-content-between">
                         <div class="category_name">{{item.NAME}}</div>
                         <div class="category-tag d-flex flex-row-reverse mr-2">
-                            <span *ngIf="item.SEASON_ONLY" class="category_tag_winner">冬季限定</span>
+                            <span *ngIf="item.SEASON_ONLY" class="category_tag_winner">季節限定</span>
                             <span *ngIf="item.SUGAR_DEFAULT" class="category_tag_sugar">甜度固定</span>
                         </div>
                     </div>

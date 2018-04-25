@@ -1,17 +1,17 @@
 
 
 .order-content{
-    background-color: rgba(246,246,246,1); 
+    background-color: #fff; 
 }
 .content-header{
-    background: linear-gradient(to right,#BD3F32,#B31217);
+    background: linear-gradient(to right,#42c5de,#5B86E5);
 }
 .drink-category{
     margin: 0;
     padding: 0;
 }
 .drink-category_title{
-    background: linear-gradient(to right,#BD3F32,#B31217);
+    background: linear-gradient(to right,#69a0cf,#4F9FE2);
     color: white;
     border-radius: 5px 5px 0 0;
     position: relative;
@@ -23,7 +23,11 @@
     
 }
 
-
+.alert-light {
+    color: #818182;
+    background-color: #f5f5f5;
+    border-color: #dedede;
+}
 @media (max-width: 575.98px) {
     .card-columns{
         column-count: 1;
@@ -111,7 +115,7 @@
     cursor: pointer;
     transition: all .3s;
     &:hover{
-        border: 1px solid rgb(255, 115, 0);
+        border: 1px solid #509AE2;
     }
 }
 
@@ -170,7 +174,7 @@
     border-radius: 50%;
     background-color: red;
     left: 7px;
-    top: 8px;
+    top: 10px;
     position: absolute;
 }
 .season-default{
@@ -180,7 +184,7 @@
     border-radius: 50%;
     background-color: rgb(0, 120, 218);
     left: 7px;
-    top: 16px;
+    top: 17px;
     position: absolute;
 }
 .m-size{
@@ -240,7 +244,7 @@ color: rgb(253, 101, 0);
 	font-weight: bold;
 	padding: 10px 4px;
 	text-align: center;
-	border-bottom: 3px solid #FF5E45;
+	border-bottom: 3px solid #42c5de;
 }
 .rwd-table td {
 	border-bottom: 1px solid #E2E2E2;

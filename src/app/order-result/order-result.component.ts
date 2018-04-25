@@ -102,4 +102,12 @@ export class OrderResultComponent implements OnInit {
       this._message.info('學人成功!', {nzDuration: 5000});
     });
   }
+
+  checkOrder(){
+    if(!this.addNAME || !this.addPW){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
