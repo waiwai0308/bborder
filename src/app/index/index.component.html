@@ -7,7 +7,7 @@
                 <h2 class="mb-3">Q & A</h2>
                     <nz-collapseset [nzBordered]="false">
                             <nz-collapse *ngFor="let panel of panels" [nzTitle]="panel.name" [nzActive]="panel.active">
-                                <p>{{panel.content}}</p>
+                                <p [innerHTML]="panel.content"></p>
                             </nz-collapse>
                         </nz-collapseset>
             </div>

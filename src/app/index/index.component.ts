@@ -15,7 +15,13 @@ export class IndexComponent implements OnInit {
       active: false,
       disabled: false,
       name: '要如何新增菜單？',
-      content: '很抱歉！目前暫不提供新增菜單的功能，若您有需要新增菜單請附上最新菜單並傳送給Webb或寄信給我'
+      content: '很抱歉！目前暫不提供線上新增菜單的功能，若您有需要新增菜單可以自行先利用下面excel整理好傳送給webb即可。下載:<a href="http://order.imjwz.com/飲料匯入格式.xlsx">飲料匯入格式</a>'
+    },
+    {
+      active: false,
+      disabled: false,
+      name: '要如何跟單？',
+      content: '直接去統計頁面按下 學我 輸入你是誰跟刪除密碼就可以加訂了！'
     },
     {
       active: false,
@@ -38,7 +44,7 @@ export class IndexComponent implements OnInit {
     {
       active: false,
       disabled: false,
-      name: '甜度跟冰量沒有我要的選項',
+      name: '甜度跟冰量沒有我要的選項？',
       content: '基本上都是根據店家的菜單上輸入的，如果真的不符合需求，請在備註說明吧'
     },
     {
