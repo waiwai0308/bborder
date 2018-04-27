@@ -38,7 +38,13 @@ export class OrderResultComponent implements OnInit {
 
   getOrderData(){
     this.OrderService.getOrderData(this.QDrinkId).subscribe((data)=>{
-      this.data = data;
+      this.data = data.sort(function(a,b){
+        if(a.ITEM_NAME > b.ITEM_NAME){
+          return 1;
+        }else{
+          return -1;
+        }
+      });
       this.countTotal(data);
     });
   }

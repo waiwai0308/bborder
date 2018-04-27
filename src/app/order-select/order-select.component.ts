@@ -134,7 +134,6 @@ export class OrderSelectComponent implements OnInit {
     }
     $(dom).fadeToggle();
   }
-
   //選擇飲料
   selectDrinkItem(item,itemSize,itemPrice){
     this.step1 = false;
@@ -146,7 +145,6 @@ export class OrderSelectComponent implements OnInit {
     if(item.SUGAR_DEFAULT){
       this.selectSugarDefault = true;
     }
-    console.log(item);
   }
 
 
@@ -181,6 +179,10 @@ export class OrderSelectComponent implements OnInit {
       totalINGREDIENTPrice += parseInt(cutData[1]);
       totalINGREDIENTName += cutData[0] + ',';
     });
+
+    if(this.selectedSUGAROption==''){
+      this.selectedSUGAROption = '固定';
+    }
 
     let orderData = {
       "ORDER_ID": this.QDrinkId,
