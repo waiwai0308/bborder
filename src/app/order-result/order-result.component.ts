@@ -49,19 +49,36 @@ export class OrderResultComponent implements OnInit {
     });
   }
 
+  storeTotal;
+
   countTotal(data){
     let itemName = [];
     let itemICE = [];
     let itemSUGAR = [];
+    let itemTotal = [];
 
     data.forEach(element => {
       itemName.push(element.ITEM_NAME);
-      itemICE.push(element.SIZE);
-      itemSUGAR.push(element.SUGAR)
+      itemICE.push(element.ITEM_NAME+"/"+element.ICE);
+      itemSUGAR.push(element.ITEM_NAME+"/"+element.SUGAR)
+      if(element.INGREDIENT){
+        itemTotal.push(element.ITEM_NAME+" / "+element.SIZE+" / "+element.SUGAR+" / "+element.ICE+" / "+element.INGREDIENT);
+      }else{
+        itemTotal.push(element.ITEM_NAME+" / "+element.SIZE+" / "+element.SUGAR+" / "+element.ICE);
+      }
+      
       this.totalPrice += element.PRICE;
     });
 
+    let result = {};
+    itemTotal.forEach(function(item , i) {
+      result[item] = result[item] ? result[item] + 1 : 1;
+    });
 
+    let formatText = JSON.stringify(result);
+    let formatTextArray = formatText.replace("{","").replace("}","").replace(/\"/g,"").split(',');
+    this.storeTotal = formatTextArray.sort();
+    console.log(formatTextArray);
   }
   
   openDeleteMoadl(template, itemID){
