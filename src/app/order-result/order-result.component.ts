@@ -45,6 +45,7 @@ export class OrderResultComponent implements OnInit {
           return -1;
         }
       });
+      this.totalPrice = 0;
       this.countTotal(data);
     });
   }
@@ -56,6 +57,7 @@ export class OrderResultComponent implements OnInit {
     let itemICE = [];
     let itemSUGAR = [];
     let itemTotal = [];
+
 
     data.forEach(element => {
       itemName.push(element.ITEM_NAME);
@@ -78,7 +80,6 @@ export class OrderResultComponent implements OnInit {
     let formatText = JSON.stringify(result);
     let formatTextArray = formatText.replace("{","").replace("}","").replace(/\"/g,"").split(',');
     this.storeTotal = formatTextArray.sort();
-    console.log(formatTextArray);
   }
   
   openDeleteMoadl(template, itemID){
