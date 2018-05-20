@@ -17,8 +17,9 @@ export class OrderSelectComponent implements OnInit {
   constructor(private OrderService: OrderService,private route: ActivatedRoute,public router: Router,private activatedRoute:ActivatedRoute) { 
     this.QDrinkId = this.route.snapshot.paramMap.get('id');
     this.subscribeQ =  this.activatedRoute.queryParams.subscribe((params)=>{
-      console.log(params,params['keyID']);
-});
+
+    });
+    sessionStorage.setItem("keyID", this.QDrinkId);
   }
 
   step1 = true;

@@ -9,6 +9,12 @@ export class HeaderComponent{
 
   @Input() headerID;
 
-  constructor() { }
+  localID;
+
+  constructor() { 
+    if(sessionStorage.getItem("keyID")){
+      this.localID = sessionStorage.getItem("keyID");
+    }
+  }
 
 }

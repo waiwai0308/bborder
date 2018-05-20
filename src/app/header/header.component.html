@@ -29,16 +29,22 @@
 					<p class="mb-0 mt-2">訂購食物</p>
 				</a>
 			</li> -->
-            <li class="nav-item active ">
+            <li class="nav-item active "  *ngIf='headerID'>
                 <a [routerLink]="['/result/'+headerID]" class="menu-btn d-flex align-items-center justify-content-center flex-column p-0">
                     <img src="/assets/images/menu03.png" alt="" srcset="">
                     <p class="mb-0 mt-2">訂單統計</p>
                 </a>
             </li>
-            <li class="nav-item active ">
+            <li class="nav-item active "  *ngIf='headerID'>
                 <a class="menu-btn  d-flex align-items-center justify-content-center flex-column p-0">
                     <img src="/assets/images/menu04.png" alt="" srcset="">
                     <p class="mb-0 mt-2">訂單管理</p>
+                </a>
+            </li>
+            <li class="nav-item active "  *ngIf='localID && !headerID'>
+                <a [routerLink]="['/order/'+localID]" class="menu-btn  d-flex align-items-center justify-content-center flex-column p-0">
+                    <img src="/assets/images/menu06.png" alt="" srcset="">
+                    <p class="mb-0 mt-2">返回訂單</p>
                 </a>
             </li>
             <!-- <li class="nav-item active ">
