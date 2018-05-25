@@ -60,11 +60,18 @@ export class OrderResultComponent implements OnInit {
 
 
     data.forEach(element => {
+      console.log(element);
       itemName.push(element.ITEM_NAME);
       itemICE.push(element.ITEM_NAME+"/"+element.ICE);
       itemSUGAR.push(element.ITEM_NAME+"/"+element.SUGAR)
-      if(element.INGREDIENT){
-        itemTotal.push(element.ITEM_NAME+" / "+element.SIZE+" / "+element.SUGAR+" / "+element.ICE+" / "+element.INGREDIENT);
+      if(element.INGREDIENT || element.NOTE){
+        if(element.INGREDIENT && element.NOTE){
+          itemTotal.push(element.ITEM_NAME+" / "+element.SIZE+" / "+element.SUGAR+" / "+element.ICE+" / "+element.INGREDIENT+" / "+element.NOTE);
+        }else if(element.INGREDIENT){
+          itemTotal.push(element.ITEM_NAME+" / "+element.SIZE+" / "+element.SUGAR+" / "+element.ICE+" / "+element.INGREDIENT);
+        }else{
+          itemTotal.push(element.ITEM_NAME+" / "+element.SIZE+" / "+element.SUGAR+" / "+element.ICE+" / "+element.NOTE);
+        }
       }else{
         itemTotal.push(element.ITEM_NAME+" / "+element.SIZE+" / "+element.SUGAR+" / "+element.ICE);
       }
