@@ -43,8 +43,8 @@
 
         <div class="row">
             <div class="col-12 mt-3">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    版本已更新，本次新增訂購人與訂購密碼儲存機制，直接存在你的localStorge，客製化飲料底線加粗顯示。
+                <div class="alert alert-danger alert-dismissible fade show h4" role="alert" *ngIf="isShowVersion">
+                    更新:新增訂購人與訂購密碼存進localStorage，下次就不用打了，客製化飲料底線加粗顯示。
                 </div>
 
                 <div class="alert alert-light alert-dismissible fade show" role="alert" *ngIf="questionInfoData">

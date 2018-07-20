@@ -45,6 +45,9 @@ export class OrderSelectComponent implements OnInit {
   drinkItem;
 
   selectSugarDefault = false;
+
+  //提示訊息是否關閉
+  isShowVersion = true;
   constructor(private OrderService: OrderService,private route: ActivatedRoute,public router: Router,private activatedRoute:ActivatedRoute) { 
     this.QDrinkId = this.route.snapshot.paramMap.get('id');
     this.subscribeQ =  this.activatedRoute.queryParams.subscribe((params)=>{
@@ -54,6 +57,7 @@ export class OrderSelectComponent implements OnInit {
 
     if(localStorage.getItem('USER') !== null){
       this.inputWho = localStorage.getItem('USER');
+      this.isShowVersion = false;
     }
     if(localStorage.getItem('PW') !== null){
       this.inputPW = localStorage.getItem('PW');
