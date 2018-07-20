@@ -43,6 +43,10 @@
 
         <div class="row">
             <div class="col-12 mt-3">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    版本已更新，本次新增訂購人與訂購密碼儲存機制，直接存在你的localStorge，客製化飲料底線加粗顯示。
+                </div>
+
                 <div class="alert alert-light alert-dismissible fade show" role="alert" *ngIf="questionInfoData">
                     訂購主旨：{{questionInfoData.NAME}}
                     <br> 訂購時間：{{questionInfoData.START_TIME | date:'MM/dd HH:mm'}} ~ {{questionInfoData.END_TIME | date:'MM/dd
@@ -64,13 +68,15 @@
                     <tbody>
                         <tr>
                             <th class="t0">大名</th>
-                            <th class="t6">密碼 <i class="fa fa-question-circle" nz-tooltip="如果你訂完後，後悔要刪除時的刪除密碼"></i></th>
+                            <th class="t6">密碼
+                                <i class="fa fa-question-circle" nz-tooltip="如果你訂完後，後悔要刪除時的刪除密碼"></i>
+                            </th>
                             <th class="t1">飲品</th>
                             <th class="t2">甜度</th>
                             <th class="t3">冰塊</th>
                             <th class="t4">加料</th>
                             <th class="t5">備註</th>
-                            
+
                         </tr>
                         <tr>
                             <td data-th="大名" class="spcing">
@@ -98,7 +104,8 @@
                             </td>
                             <td data-th="加料" class="spcing">
                                 <nz-select [nzMode]="'multiple'" [nzPlaceHolder]="'加料請點我'" [(ngModel)]="selectedMultipleOption" [nzNotFoundContent]="'沒有選項喔'">
-                                    <nz-option *ngFor="let option of searchOptions" [nzLabel]="option.NAME + ' +' + option.PRICE" [nzValue]="option.NAME + ',' + option.PRICE" [nzDisabled]="option.disabled">
+                                    <nz-option *ngFor="let option of searchOptions" [nzLabel]="option.NAME + ' +' + option.PRICE" [nzValue]="option.NAME + ',' + option.PRICE"
+                                        [nzDisabled]="option.disabled">
                                     </nz-option>
                                 </nz-select>
                             </td>
@@ -111,9 +118,9 @@
 
             </div>
             <div class="col-12 text-center my-3">
-                    <button nz-button [nzType]="'default'" (click)="reOrderDrink()">
-                            <span>重選</span>
-                        </button>
+                <button nz-button [nzType]="'default'" (click)="reOrderDrink()">
+                    <span>重選</span>
+                </button>
                 <button nz-button [nzType]="'primary'" (click)="orderDrink()" [disabled]="checkOrder()">
                     <span>訂購</span>
                 </button>
@@ -138,7 +145,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-sm">名稱</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" >
+                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -158,8 +165,10 @@
 
         </div>
         <div class="col-12 mb-3 d-flex align-items-center" *ngIf="step1">
-            <span class="season-default-qa mr-2"></span><span style="font-size: 10px">季節限定</span>
-            <span class="sugar-default-qa mx-2"></span><span style="font-size: 10px">甜度固定</span>
+            <span class="season-default-qa mr-2"></span>
+            <span style="font-size: 10px">季節限定</span>
+            <span class="sugar-default-qa mx-2"></span>
+            <span style="font-size: 10px">甜度固定</span>
         </div>
         <div class="card-columns mt-1" *ngIf="!isChooseSelf && step1">
             <div class="card p-0 border-0" *ngFor="let item of menu">
@@ -173,9 +182,11 @@
                     </div>
 
                     <ul class="drink-category_list px-1" #category>
-                        <li class='drink-category_item d-flex p-0 py-2' *ngFor="let detail of item.ITEM">
+                        <li class='drink-category_item d-flex p-0 py-2' *ngFor="let detail of item.ITEM" [ngStyle]="{'border-bottom':detail.ID === 687 ? '3px solid red' : '' }">
                             <!-- <span class="is-hot">H</span> -->
-                            <div class="drink_name pl-3"><span class="season-default" *ngIf="detail.SEASON_ONLY"></span><span class="sugar-default"  *ngIf="detail.SUGAR_DEFAULT"></span>{{detail.NAME}}</div>
+                            <div class="drink_name pl-3">
+                                <span class="season-default" *ngIf="detail.SEASON_ONLY"></span>
+                                <span class="sugar-default" *ngIf="detail.SUGAR_DEFAULT"></span>{{detail.NAME}}</div>
                             <div class="ml-auto">
                                 <span *ngIf="detail.M_PRICE" class="price" (click)="selectDrinkItem(detail,'M',detail.M_PRICE)">
                                     <i class="m-size"></i>

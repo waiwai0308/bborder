@@ -14,14 +14,7 @@ export class OrderSelectComponent implements OnInit {
   QDrinkId;
   subscribeQ;
 
-  constructor(private OrderService: OrderService,private route: ActivatedRoute,public router: Router,private activatedRoute:ActivatedRoute) { 
-    this.QDrinkId = this.route.snapshot.paramMap.get('id');
-    this.subscribeQ =  this.activatedRoute.queryParams.subscribe((params)=>{
-
-    });
-    sessionStorage.setItem("keyID", this.QDrinkId);
-  }
-
+  
   step1 = true;
   step2 = false;
 
@@ -52,6 +45,21 @@ export class OrderSelectComponent implements OnInit {
   drinkItem;
 
   selectSugarDefault = false;
+  constructor(private OrderService: OrderService,private route: ActivatedRoute,public router: Router,private activatedRoute:ActivatedRoute) { 
+    this.QDrinkId = this.route.snapshot.paramMap.get('id');
+    this.subscribeQ =  this.activatedRoute.queryParams.subscribe((params)=>{
+
+    });
+    sessionStorage.setItem("keyID", this.QDrinkId);
+
+    if(localStorage.getItem('USER') !== null){
+      this.inputWho = localStorage.getItem('USER');
+    }
+    if(localStorage.getItem('PW') !== null){
+      this.inputPW = localStorage.getItem('PW');
+    }
+  }
+
 
   ngOnInit() {
     this.getQuestionInfo();
@@ -183,6 +191,13 @@ export class OrderSelectComponent implements OnInit {
 
     if(this.selectedSUGAROption==''){
       this.selectedSUGAROption = '固定';
+    }
+
+    if(localStorage.getItem('USER') == null){
+      localStorage.setItem('USER', this.inputWho);
+    }
+    if(localStorage.getItem('PW') == null){
+      localStorage.setItem('PW', this.inputPW);
     }
 
     let orderData = {
