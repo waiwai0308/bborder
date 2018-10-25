@@ -43,10 +43,6 @@
 
         <div class="row">
             <div class="col-12 mt-3">
-                <div class="alert alert-danger alert-dismissible fade show h4" role="alert" *ngIf="isShowVersion">
-                    更新:新增訂購人與訂購密碼存進localStorage，下次就不用打了，客製化飲料底線加粗顯示。
-                </div>
-
                 <div class="alert alert-light alert-dismissible fade show" role="alert" *ngIf="questionInfoData">
                     訂購主旨：{{questionInfoData.NAME}}
                     <br> 訂購時間：{{questionInfoData.START_TIME | date:'MM/dd HH:mm'}} ~ {{questionInfoData.END_TIME | date:'MM/dd
@@ -195,6 +191,10 @@
                                 <span *ngIf="detail.L_PRICE" class="price" (click)="selectDrinkItem(detail,'L',detail.L_PRICE)">
                                     <i class="l-size"></i>
                                     {{detail.L_PRICE}}
+                                </span>
+                                <span *ngIf="detail.XL_PRICE" class="price" (click)="selectDrinkItem(detail,'XL',detail.XL_PRICE)">
+                                    <i class="xl-size"></i>
+                                    {{detail.XL_PRICE}}
                                 </span>
                                 <span *ngIf="detail.C_PRICE" class="price" (click)="selectDrinkItem(detail,'C',detail.C_PRICE)">
                                     <i class="c-size"></i>
